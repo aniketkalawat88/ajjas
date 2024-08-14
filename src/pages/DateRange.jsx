@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import img1 from "../Assests/Images/01.png"
+import { FaCalendarAlt } from 'react-icons/fa';
 
 const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -111,7 +112,7 @@ function DateRange(props) {
     <div className="bg-[#1A1A1A] pt-4 px-4 rounded-b-xl">
       <div className='flex justify-between items-center'>
       <Link to={'/'} className="text-base font-semibold flex gap-4">&#10005; <span> Date range</span></Link>
-        <span className='text-[#FFBE00] font-semibold'>Save</span>
+        <Link to={'/CustomRange'} className='text-[#FFBE00] font-semibold'>Save</Link>
       </div>
         <div className="mt-6 flex justify-between px-6 text-sm">
             <div className={('hover:border-b-2 hover:border-b-[#FFBE00] pb-2 cursor-pointer' , isVal === 0 ? "border-b-2 border-b-[#FFBE00] pb-2 cursor-pointer": "cursor-pointer")} onClick={() => setIsVal(0)} >Day</div>
@@ -254,7 +255,7 @@ function DateRange(props) {
             }
         </div>
          <div className='flex items-center justify-between' onClick={() => setIsYear(2)}>
-            <div className='grid group py-4 w-full'>
+            <div className='grid group py-4 w-full border-b-[#FFFFFF26] border-b-2'>
             <span className={('group-hover:text-[#FFBE00] text-sm', isYear === 2 ? "text-[#FFBE00]" : "")}>Lifetime</span>
             <span className='text-[#FFFFFF99] text-xs'>Apr 5’ 2022 - Apr 20’ 2024</span>
             </div>
@@ -263,6 +264,30 @@ function DateRange(props) {
                 <img src={img1} alt='No Preview' className='' />
             }
          </div>
+         <div className='flex items-center justify-between py-4' onClick={() => setIsYear(3)}>
+            <div className={('group-hover:text-[#FFBE00] text-sm cursor-pointer', isYear === 3 ? "text-[#FFBE00]" : "")}>Custom</div>
+            {
+                isYear === 3 &&
+                <img src={img1} alt='No Preview' className='' />
+            }
+
+         </div>
+         {
+            isYear === 3 && 
+            <div className='grid grid-cols-2 gap-6'>
+               <label className='border-2 border-[#4a4a4a] text-[#9B9B9B] h-full w-full p-2 rounded-xl items-center flex'>
+               <FaCalendarAlt className='text-[#9B9B9B] text-xl' />
+                <div className=''>
+                    <div>Start date</div>
+                    <input type='date' className='bg-transparent outline-none'  />
+                </div>
+               </label>
+               <label className='border-2 border-[#4a4a4a] text-[#9B9B9B] h-full w-full p-2 rounded-xl'>
+                   <div>End date</div>
+                   <input type='date' className='bg-transparent outline-none' />
+               </label>
+            </div>
+         }
        </div>
       )}
     </div>
