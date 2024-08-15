@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { DummyData } from '../dummydata/page'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaCalendarAlt, FaRegClock } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
 import { GiPathDistance } from "react-icons/gi";
